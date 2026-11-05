@@ -10,7 +10,15 @@ Dans tout le parcours, `<pseudo>` = votre nom d'utilisateur GitHub **en minuscul
 
 1. **Accepter l'invitation** au dépôt : e-mail reçu de GitHub, ou https://github.com/notifications.
 2. **Régler les notifications** pour ne recevoir que vos propres messages : en haut de cette page, bouton **Watch** › **Participating and @mentions**.
-3. **Cloner le dépôt** dans VS Code : `Ctrl+Shift+P` › `Git: Clone` › coller l'adresse donnée par l'enseignant.
+3. **Rester discret** : ce dépôt est public, tout le monde peut le lire. Avant votre premier commit :
+   - sur https://github.com/settings/emails, cochez **Keep my email addresses private** et copiez l'adresse qui se termine par `@users.noreply.github.com` ;
+   - dans le terminal de VS Code, tapez :
+     ```
+     git config --global user.name "<pseudo>"
+     git config --global user.email "<adresse noreply copiée>"
+     ```
+   - n'écrivez aucune information personnelle (nom réel, photo, données privées) dans vos fichiers ni dans vos messages.
+4. **Cloner le dépôt** dans VS Code : `Ctrl+Shift+P` › `Git: Clone` › coller l'adresse donnée par l'enseignant.
 
 ## Mission 1
 
