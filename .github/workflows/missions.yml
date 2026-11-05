@@ -1,0 +1,50 @@
+name: Missions
+
+on:
+  push:
+    branches-ignore: [main, develop]
+    tags: ['**']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: missions-${{ github.actor }}
+  cancel-in-progress: false
+
+jobs:
+  bot:
+    name: Bot des missions
+    if: github.event.deleted == false && github.actor != github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: develop
+          fetch-depth: 0
+      - name: Récupérer toutes les branches et tous les tags
+        run: git fetch --force --tags origin '+refs/heads/*:refs/remotes/origin/*'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+      - name: Vérifier les missions
+        env:
+          ACTEUR: ${{ github.actor }}
+          REF: ${{ github.ref }}
+          AVANT: ${{ github.event.before }}
+          SORTIE: ${{ runner.temp }}/resultat.json
+        run: node .github/missions/bot.js
+      - name: Répondre à l'élève
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RES: ${{ runner.temp }}/resultat.json
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          TAG=$(node -p "require(process.env.RES).supprimerTag || ''")
+          if [ -n "$TAG" ]; then
+            gh api -X DELETE "repos/$REPO/git/refs/tags/$TAG" || true
+          fi
+          node -e "const r=require(process.env.RES);require('fs').writeFileSync('corps.json',JSON.stringify({body:r.commentaire}))"
+          gh api -X POST "repos/$REPO/commits/$SHA/comments" --input corps.json > /dev/null
+          echo "Réponse envoyée en commentaire sur le commit." >> "$GITHUB_STEP_SUMMARY"

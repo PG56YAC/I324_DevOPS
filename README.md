@@ -1,0 +1,37 @@
+# I324 – Missions GitFlow
+
+Bienvenue dans le dépôt des missions. Vous allez réaliser **10 missions** sur Git et GitHub.
+Après chaque push, un **bot** vérifie votre travail et vous envoie par e-mail la mission suivante, avec un fragment de code.
+À la fin, vous remettez les fragments dans l'ordre pour obtenir un programme qui fonctionne.
+
+Dans tout le parcours, `<pseudo>` = votre nom d'utilisateur GitHub **en minuscules**.
+
+## Avant de commencer
+
+1. **Accepter l'invitation** au dépôt : e-mail reçu de GitHub, ou https://github.com/notifications.
+2. **Régler les notifications** pour ne recevoir que vos propres messages : en haut de cette page, bouton **Watch** › **Participating and @mentions**.
+3. **Cloner le dépôt** dans VS Code : `Ctrl+Shift+P` › `Git: Clone` › coller l'adresse donnée par l'enseignant.
+
+## Mission 1
+
+Créez la branche `feature/<pseudo>` **à partir de `develop`**, puis poussez-la.
+
+Dans VS Code :
+
+1. En bas à gauche, cliquez sur le nom de la branche › **Create new branch from…** › choisissez `origin/develop`.
+2. Nommez la branche `feature/<pseudo>`.
+3. Onglet **Source Control** (`Ctrl+Shift+G`) › **Publish Branch**.
+
+Environ 30 secondes plus tard, le bot vous répond : **e-mail** de GitHub, ou commentaire sur votre commit.
+La suite des missions arrive de la même façon.
+
+## Règles du jeu
+
+- Chaque mission se termine par un **push** : sans push, le bot ne voit rien.
+- Pour pousser un tag, utilisez son nom : `git push origin <tag>`.
+- Ne vous placez jamais sur un tag (VS Code afficherait le nom du tag en bas à gauche) : restez sur vos branches.
+- Votre rangée peut vous aider à comprendre, mais c'est vous qui faites chaque action.
+
+---
+
+Application to-do d'origine : [docker/getting-started-app](https://github.com/docker/getting-started-app), licence MIT. Elle servira dans les prochaines semaines.
