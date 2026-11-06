@@ -1,0 +1,1 @@
+const [version, type] = process.argv.slice(2);
