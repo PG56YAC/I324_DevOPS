@@ -1,1 +1,1 @@
-Mission : GitFlow documentation fixed
+Mission : GitFlow documentation final fixes
